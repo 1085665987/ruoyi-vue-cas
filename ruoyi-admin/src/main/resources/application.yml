@@ -1,0 +1,185 @@
+#CAS服务器配置
+cas:
+  server:
+    host:
+      #CAS服务地址
+      url: http://127.0.0.1:8888/cas
+      #CAS服务登录地址
+      login_url: ${cas.server.host.url}/login
+      #CAS服务登出地址
+      logout_url: ${cas.server.host.url}/logout?service=${cas.server.host.url}/login?service=${app.server.host.url}
+
+#应用访问地址
+app:
+  #项目名称
+  name: ruoyi-test
+  #是否开启CAS
+  casEnable: true
+  server:
+    host:
+      #项目地址
+      url: http://127.0.0.1:${server.port}
+  #应用登录地址
+  login_url: /
+  #应用登出地址
+  logout_url: /logout
+  #前端回调地址
+  callback_url: /cas/index
+  #前端登录地址
+  web_url: http://127.0.0.1:9000/index
+
+#Server配置
+server:
+  port: 9050
+  servlet:
+    context-path: /
+  tomcat:
+    #tomcat的URI编码
+    uri-encoding: UTF-8
+    #连接数满后的排队数(默认为100)
+    accept-count: 1000
+    threads:
+      #tomcat最大线程数(默认为200)
+      max: 800
+      #tomcat启动初始化的线程数(默认值10)
+      min-spare: 100
+
+#Spring配置
+spring:
+  #资源信息
+  messages:
+    #国际化资源文件路径
+    basename: i18n/messages
+  profiles:
+    active: dev
+  #文件上传
+  servlet:
+    multipart:
+      #单个文件大小
+      max-file-size: 100MB
+      #设置总上传的文件大小
+      max-request-size: 200MB
+  #服务模块
+  devtools:
+    restart:
+      #热部署开关
+      enabled: false
+  #redis配置
+  redis:
+    #地址
+    host: 127.0.0.1
+    #端口(默认为6379)
+    port: 6379
+    #数据库索引
+    database: 0
+    #密码
+    password:
+    #连接超时时间
+    timeout: 10s
+    lettuce:
+      pool:
+        #连接池中的最小空闲连接
+        min-idle: 0
+        #连接池中的最大空闲连接
+        max-idle: 8
+        #连接池的最大数据库连接数
+        max-active: 8
+        #连接池最大阻塞等待时间(使用负值表示没有限制)
+        max-wait: -1ms
+  mvc:
+    pathmatch:
+      matching-strategy: ANT_PATH_MATCHER
+
+#日志配置
+logging:
+  level:
+    com.ruoyi: info
+    org.springframework: info
+
+#项目相关配置
+ruoyi:
+  #名称
+  name: RuoYi
+  #版本
+  version: 3.8.3
+  #版权年份
+  copyrightYear: 2022
+  #实例演示开关
+  demoEnabled: true
+  #文件路径
+  profile: D:/ruoyi/uploadPath
+  #获取ip地址开关
+  addressEnabled: false
+  #验证码类型(math:数值计算 char:字符验证)
+  captchaType: math
+
+#token配置
+token:
+  #令牌自定义标识
+  header: Authorization
+  #令牌密钥
+  secret: 38E17E08D8E840CCAAC70B4824BB20056F3WOT8P1GFW6151037NOTLDPKQX762L3OJWW45GTL09K6ZI83E1KLTKDB
+  #令牌有效期(单位:分钟)
+  expireTime: 125
+
+#MybatisPlus配置
+mybatis-plus:
+  #加载全局的配置文件
+  configLocation: classpath:mybatis/mybatis-config.xml
+  #配置mapper的扫描
+  mapperLocations: classpath*:mybatis/**/*Mapper.xml
+  #搜索指定包别名
+  typeAliasesPackage: com.ruoyi.project.**.domain
+  #全局配置
+  global-config:
+    #数据库相关配置
+    db-config:
+      #主键类型 AUTO:数据库ID自增 INPUT:用户输入ID ID_WORKER:全局唯一ID(数字类型唯一ID) UUID:全局唯一ID(UUID)
+      id-type: AUTO
+      #字段策略 IGNORED:忽略判断 NOT_NULL:非NULL判断 NOT_EMPTY:非空判断
+      where-strategy: NOT_NULL
+      insert-strategy: NOT_NULL
+      update-strategy: NOT_NULL
+      #逻辑删除配置
+      logic-delete-value: -1
+      logic-not-delete-value: 0
+    banner: false
+  #原生配置
+  configuration:
+    map-underscore-to-camel-case: true
+    cache-enabled: false
+    call-setters-on-nulls: true
+    jdbc-type-for-null: NULL
+
+#PageHelper分页插件
+pagehelper:
+  helperDialect: mysql
+  supportMethodsArguments: true
+  params: count=countSql
+
+#Swagger配置
+swagger:
+  #是否开启swagger
+  enabled: true
+  #请求前缀
+  pathMapping: /dev-api
+
+#防止XSS攻击
+xss:
+  #过滤开关
+  enabled: true
+  #排除链接(多个用逗号分隔)
+  excludes: /system/notice
+  #匹配链接
+  urlPatterns: /system/*,/monitor/*,/tool/*
+
+#代码生成
+gen:
+  #作者
+  author: ruoyi
+  #默认生成包路径
+  packageName: com.ruoyi.project.system
+  #自动去除表前缀(默认是true)
+  autoRemovePre: false
+  #表前缀(生成类名不会包含表前缀且多个用逗号分隔)
+  tablePrefix: sys_

@@ -1,0 +1,41 @@
+{
+    "name": "ruoyi",
+    "version": "3.8.3",
+    "description": "VUE3前后端分离",
+    "author": "MikuHoney",
+    "license": "MIT",
+    "scripts": {
+        "dev": "vite",
+        "build:prod": "vite build",
+        "build:preview": "vite preview"
+    },
+    "dependencies": {
+        "@element-plus/icons-vue": "2.0.9",
+        "@vueuse/core": "9.3.0",
+        "axios": "0.27.2",
+        "echarts": "5.4.0",
+        "element-plus": "2.2.17",
+        "file-saver": "2.0.5",
+        "fuse.js": "6.6.2",
+        "js-cookie": "3.0.1",
+        "jsencrypt": "3.2.1",
+        "nprogress": "0.2.0",
+        "pinia": "2.0.22",
+        "vue": "3.2.40",
+        "vue-cropper": "1.0.5",
+        "vue-router": "4.1.5",
+        "xe-utils": "3.5.7",
+        "vxe-table": "4.3.5",
+        "@icon-park/vue-next": "1.4.2"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue": "3.1.2",
+        "@vue/compiler-sfc": "3.2.40",
+        "sass": "1.55.0",
+        "unplugin-auto-import": "0.11.2",
+        "vite": "3.1.6",
+        "vite-plugin-compression": "0.5.1",
+        "vite-plugin-svg-icons": "2.0.1",
+        "vite-plugin-vue-setup-extend": "0.4.0"
+    }
+}
